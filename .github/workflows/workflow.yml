@@ -20,7 +20,7 @@ jobs:
       - name: pip
         run: pip3 install -r requirements.txt
       - name: foo
-        run: python foo.py
+        run: python3 foo.py
         
   job2:
     runs-on: windows-latest
