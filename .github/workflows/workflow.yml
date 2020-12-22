@@ -21,15 +21,23 @@ jobs:
         run: pip3 install -r requirements.txt
       - name: foo
         run: python3 foo.py
-        
+  
   job2:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     needs: job1
 
     steps:
       - uses: actions/checkout@v2
+      - name: print url
+        run: echo ${{needs.job1.outputs.url}}    
+  
+  job3:
+    runs-on: windows-latest
+
+    needs: job2
+
+    steps:
+      - uses: actions/checkout@v2
       - name: run a powershell script
         run: pwsh -command ".\$GITHUB_WORKSPACE\foo.ps1"
-      - name: print url
-        run: echo ${{needs.job1.outputs.url}}
