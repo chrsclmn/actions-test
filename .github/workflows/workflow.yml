@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  job_id:
+  job1:
     runs-on: ubuntu-latest
     
     outputs:
@@ -22,10 +22,14 @@ jobs:
       - name: foo
         run: python foo.py
         
-  build:
+  job2:
     runs-on: windows-latest
+
+    needs: job1
 
     steps:
       - uses: actions/checkout@v2
       - name: run a powershell script
         run: pwsh -command ".\$GITHUB_WORKSPACE\foo.ps1"
+      - name: print url
+        run: echo ${{needs.job1.outputs.url}}
