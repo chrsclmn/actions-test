@@ -31,7 +31,6 @@ class GoogleUpdate:
                 for url in root.xpath('app/updatecheck/urls/url')]
         manifest = root.xpath('app/updatecheck/manifest')[0]
         version = manifest.get('version')
-        print(version)
         install = manifest.xpath('actions/action[@event="install"]')[0]
         installer = install.get('run')
         print(f'::set-output name=url::{urls[0]}/{installer}')
