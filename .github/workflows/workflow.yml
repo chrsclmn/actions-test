@@ -19,7 +19,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: pip
         run: pip3 install -r requirements.txt
-      - name: foo
+      - id: foo
+        name: foo
         run: python3 foo.py
   
   job2:
