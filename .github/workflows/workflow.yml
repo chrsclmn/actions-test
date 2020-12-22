@@ -14,8 +14,8 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-      - name: ver
-        run: python --version
+      - name: pip
+        run: pip3 install -r requirements.txt
       - name: foo
         run: python3 foo.py
         
