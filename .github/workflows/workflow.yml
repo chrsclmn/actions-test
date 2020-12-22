@@ -14,8 +14,10 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+      - name: ver
+        run: python --version
       - name: foo
-        run: python foo.py
+        run: python3 foo.py
         
   build:
     runs-on: windows-latest
