@@ -34,7 +34,7 @@ class GoogleUpdate:
         print(version)
         install = manifest.xpath('actions/action[@event="install"]')[0]
         installer = install.get('run')
-        print(f'{urls[0]}/{installer}')
+        print(f'::set-output name=url::{urls[0]}/{installer}')
 
 
 if __name__ == '__main__':
