@@ -31,18 +31,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: download chrome installer
-        run: Invoke-WebRequest -Uri ${{needs.job1.outputs.url}} -OutFile "C:\chrome_installer.exe"
+        run: Invoke-WebRequest -Uri ${{needs.job1.outputs.url}} -OutFile .\$GITHUB_WORKSPACE\chrome_installer.exe
       - name: run chrome installer
-        run: C:\chrome_installer.exe --verbose-logging --do-not-launch-chrome
-      - name: find files
-        run: Get-Childitem –Path C:\ -Recurse
-  
-  job3:
-    runs-on: windows-latest
-
-    needs: job2
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: run a powershell script
-        run: pwsh -command ".\$GITHUB_WORKSPACE\foo.ps1"
+        run: .\$GITHUB_WORKSPACE\chrome_installer.exe --verbose-logging --do-not-launch-chrome
