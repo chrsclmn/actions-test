@@ -31,6 +31,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: download chrome installer
-        run: Invoke-WebRequest -Uri ${{needs.job1.outputs.url}} -OutFile .\$GITHUB_WORKSPACE\chrome_installer.exe
+        run: Invoke-WebRequest -Uri ${{needs.job1.outputs.url}} -OutFile .\chrome_installer.exe
       - name: run chrome installer
-        run: .\$GITHUB_WORKSPACE\chrome_installer.exe --verbose-logging --do-not-launch-chrome
+        run: .\chrome_installer.exe --verbose-logging --do-not-launch-chrome
