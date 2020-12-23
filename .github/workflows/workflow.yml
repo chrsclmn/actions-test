@@ -34,3 +34,5 @@ jobs:
         run: Invoke-WebRequest -Uri ${{needs.job1.outputs.url}} -OutFile .\chrome_installer.exe
       - name: run chrome installer
         run: .\chrome_installer.exe --verbose-logging --do-not-launch-chrome
+      - name: find log
+        run: Get-Childitem –Path C:\ -Include *.log -File -Recurse -ErrorAction SilentlyContinue
