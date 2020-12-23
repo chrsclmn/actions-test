@@ -24,14 +24,14 @@ jobs:
         run: python3 foo.py
   
   job2:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     needs: job1
 
     steps:
       - uses: actions/checkout@v2
-      - name: print url
-        run: echo ${{needs.job1.outputs.url}}    
+      - name: download chrome installer
+        run: Invoke-WebRequest -Uri ${{needs.job1.outputs.url}} -OutFile "C:\chrome_installer.exe"  
   
   job3:
     runs-on: windows-latest
